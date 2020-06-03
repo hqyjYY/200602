@@ -11,7 +11,7 @@ public class TestController {
 	@ResponseBody
 	public String testDesc() {
 		System.out.println("执行完毕");
-		return "This is test module desc";
+		return "This is test module desc.2";
 		
 	}
 
