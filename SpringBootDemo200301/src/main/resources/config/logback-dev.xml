@@ -14,7 +14,7 @@
 		%msg：表示应用程序提供需要打印的日志信息；
 		%n：表示换行符；
  -->
-<configuration
+<configuration 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:noNamespaceSchemaLocation="http://www.padual.com/java/logback.xsd"
     debug="false" scan="true" scanPeriod="30 seconds">
