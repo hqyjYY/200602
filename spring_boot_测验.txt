@@ -1,0 +1,116 @@
+一、选择题（共12小题，每小题2.5分，共30分）
+	以下不是spring boot优点的是 (D)
+		A．快速搭建项目
+		B．简化配置  
+		C．自动配置  
+		D．无需容器
+	Spring Boot配置，以下哪个优先级最高（A）
+		A、外置：xx.jar同目录下/config/application.properties；
+		B、外置：xx.jar同目录下/config/application.yml；
+		C、内置：src/main/resources/config；
+		D、内置：src/main/resources
+	以下log日志级别哪个最高（D）
+		A、DEBUG
+		B、INFO
+		C、WARN
+		D、ERROR
+	以下不是spring boot的核心注解的是 (D)
+		A.	@SpringBootConfiguration
+		B.	@EnableAutoConfiguration
+		C.	@ComponentScan
+		D.	@MapperScan
+	要使用springMVC的功能，以下哪个架包是必须加的 (C)
+		A．spring-boot-starter-jdbc  
+		B．spring-boot-starter-thymeleaf  
+		C．spring-boot-starter-web  
+		D．mybatis-spring-boot-starter
+	以下哪个注解不能加在类上 (B)
+		A.	@Controller
+		B.	@ResponseBody
+		C.	@RestController
+		D.	@RequestMapping
+	当控制层上有@RestController注解时，方法中返回一个字符串“<h1>Hello</h1>” 的结果是 (A)
+		A. 一级标题显示的Hello
+		B.	找不到Hello.html
+		C.	<h1>Hello</>
+		D.	Hello
+	SpringBoot项目中配置文件的格式 (C)
+		A．properties  
+		B．yml  
+		C．两者都可以
+	前台使用json参数格式，控制器consumer、参数使用的注解是（B）
+		A、application/josn ---- @RequestBody
+		B、application/josn ---- @ModelAttribute
+		C、application/x-www-form-urlencoded ---- @RequestBody
+		D、application/x-www-form-urlencoded ---- @ModelAttribute
+	@Pointcut("execution(public * com.thornBird.sbd.modules.*.controller.*.*(..))")，第三个*代表（C）
+		A、代表返回类型不限
+		B、代表module下所有子包
+		C、代表所有类
+		D、代表所有方法
+	Url匹配风格中/admin*，以下哪个匹配不正确（D）
+		A、/admin
+		B、/admin1
+		C、/admin123
+		D、/admin/1
+	Mybatis框架中，插入数据使用那个注解（B）
+		A、@Update
+		B、@Insert
+		C、@Select
+		D、@InsertMapping
+二、填空题（共5小题，每小题5分，共25分）
+	Java配置依赖的2个注解是@Configration，@Bean；
+	修改tomcat端口号为9090应该怎么写？Server.port=9090；
+	自定义拦截器需要实现HandlerInterceptor接口；
+	过滤器需要使用@WebFilter注解；
+	上传文件，使用MultipartFile接收文件对象，consumer使用multipart；
+三、问答题（每题5分）
+	简述Spring
+	
+	答：Spring是整合了主流的第三方框架，形成的一套快速开发的框架。
+	
+	简述Git使用流程，写几个常用Git命令；
+	
+	答：首先进入到需要进行git命令操作的文件夹，在地址栏输入cmd，打开命令窗口，执行相应的git命令
+	常用的命令有：
+	git clone github地址 下载github地址对应的内容
+	git checkout -b dev -t origin/master 创建 dev 分支
+	git push origin HEAD 将本地创建的 dev 分支push 到远程
+	
+	简述敏捷开发、Scrum流程；
+	答：敏捷开发就是把一个大项目划分成一个个小任务分配到个人，每个人在自己的分支上完成并push自己的进度，每天早上每个人把自己的进度以及遇到的问题在会议里汇报出来，方便管理
+	
+	简述shiro两大功能实现流程；
+	答：shiro两大功能分别是身份验证，资源授权
+	身份验证，先取得用户登录信息，用令牌包装login，调用 subject.login
+	myreal --- 身份验证方法 ---- 获取用户名查询user ---- 包装身份验证器 ---- 用身份验证器和令牌比对 ---- 比对成功继续执行，比对失败抛出异常
+	资源授权，用户在登录页面输入用户名、密码
+				usercontroller --- login
+				userserviceimpl --- login
+					获取 subject 组件
+					subject.checkRoles
+				页面上添加相应的标签
+				控制器上添加相应的注解
+				访问相应的页面或控制器 ---- 如果有shiro 标签 或者shiro注解 ---- 调用 realm 里资源授权的方法，包装了资源验证器 ---- 资源验证器 与 页面标签 或者 控制器注解进行对比
+四、编程题（共2小题，1题12分，2题13分，共25分）
+	访问控制层，将一个List装入requset中，再在页面上以表格的形式显示出来
+	
+	@RequestMapping("/cities")
+		public PageInfo<City> getCitiesByPage(
+				@RequestParam int currentPage, 
+				@RequestParam int pageSize, 
+				@RequestParam int countryId) {
+			return cityService.getCitiesByPage(currentPage, pageSize, countryId);
+		}
+		<table>
+			<th>cityId</th><th>cityName</th><th>countryId</th>
+			<tr th:each="city : ${cities}">
+				<td th:text="${city.cityId}"></td>
+				<td th:text="${city.cityName}"></td>
+				<td th:text="${city.countryId}"></td>
+			</tr>
+		</table>
+		
+	请写出重定向到某个页面的代码
+	
+	return "redirect:/test/index";
