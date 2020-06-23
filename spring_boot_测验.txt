@@ -38,7 +38,7 @@
 		A．properties  
 		B．yml  
 		C．两者都可以
-	前台使用json参数格式，控制器consumer、参数使用的注解是（B）
+	前台使用json参数格式，控制器consumer、参数使用的注解是（A）
 		A、application/josn ---- @RequestBody
 		B、application/josn ---- @ModelAttribute
 		C、application/x-www-form-urlencoded ---- @RequestBody
